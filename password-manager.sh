@@ -1,6 +1,9 @@
 #!/bin/bash
 
-echo "パスワードマネージャーへようこそ！"
+while true
+do
+
+echo "パスワードマネジャーへようこそ！"
 
 echo -n "次の選択肢から入力してください(Add Password/Get Password/Exit)："
 read select
@@ -17,6 +20,27 @@ if [ "$select" = "Add Password" ]; then
   echo -n "パスワードを入力してください："
   read password
   echo "$password" >> ~/password.txt
-fi
 
-echo "Thank you!"
+  echo "パスワードの追加は成功しました。"
+
+elif [ "$select" = "Get Password" ]; then
+  echo -n "サービス名を入力してください："
+  read service
+
+  if grep -q "$service" ~/password.txt; then
+  grep -A 2 "$service" ~/password.txt
+
+  else
+    echo "そのサービスは登録されていません。" 
+  fi
+
+elif [ "$select" = "Exit" ]; then
+  echo "Thank you!"
+  break
+
+else
+echo "入力が間違えています。"
+
+fi
+done
+
