@@ -26,8 +26,13 @@ if [ "$select" = "Add Password" ]; then
 elif [ "$select" = "Get Password" ]; then
   echo -n "サービス名を入力してください："
   read service
-  cat ~/password.txt | grep -A 2 "$service"
 
+  if grep -q "$service" ~/password.txt; then
+  grep -A 2 "$service" ~/password.txt
+
+  else
+    echo "そのサービスは登録されていません。" 
+  fi
 fi
 done
 
