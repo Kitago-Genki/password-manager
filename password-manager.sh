@@ -20,6 +20,14 @@ if [ "$select" = "Add Password" ]; then
   echo -n "パスワードを入力してください："
   read password
   echo "$password" >> ~/password.txt
+
+  echo "パスワードの追加は成功しました。"
+
+elif [ "$select" = "Get Password" ]; then
+  echo -n "サービス名を入力してください："
+  read service
+  cat ~/password.txt | grep -A 2 "$service"
+
 fi
 done
 
