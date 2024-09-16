@@ -37,6 +37,10 @@ elif [ "$select" = "Get Password" ]; then
 elif [ "$select" = "Exit" ]; then
   echo "Thank you!"
   break
+
+else
+echo "入力が間違えています。"
+
 fi
 done
 
