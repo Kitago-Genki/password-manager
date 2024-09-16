@@ -33,7 +33,10 @@ elif [ "$select" = "Get Password" ]; then
   else
     echo "そのサービスは登録されていません。" 
   fi
+
+elif [ "$select" = "Exit" ]; then
+  echo "Thank you!"
+  break
 fi
 done
 
-echo "Thank you!"
